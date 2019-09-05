@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { ContactComponent } from './contact/contact.component';
 import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdminModule } from './admin/admin.module';
     HeroesModule,
     CrisesModule,
     AdminModule,
-    AppRoutingModule
+    AuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
