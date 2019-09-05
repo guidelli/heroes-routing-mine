@@ -15,11 +15,13 @@ export class HeroDetailComponent implements OnInit {
 
   hero$: Observable<Hero>;
 
+
   constructor(private service: HeroService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
     this.hero$ = this.route.paramMap.pipe(switchMap((paramMap: ParamMap) =>
+
       this.service.getHero(+paramMap.get('id'))
     ));
   }

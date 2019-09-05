@@ -1,0 +1,7 @@
+<h2>CRISES</h2>
+<div *ngIf="crisis$|async as crisis">
+  "{{crisis.name| uppercase}}"
+  <div>Id: {{crisis.id}}</div>
+  <div>Name: <input type="text" [(ngModel)]="crisis.name"></div>
+  <button (click)="gotoCrises(crisis.id)">Back</button>
+</div>
