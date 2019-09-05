@@ -1,1 +1,6 @@
-<p>login works!</p>
+<h2>LOGIN</h2>
+<p *ngIf="message">{{message}}</p>
+<p>
+  <button *ngIf="logged" (click)="logout()">Logout</button>
+  <button *ngIf="!logged" (click)="login()">Login</button>
+</p>

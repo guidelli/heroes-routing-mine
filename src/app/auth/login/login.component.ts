@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: AuthService, private router: Router) { }
+
+  message: string;
 
   ngOnInit() {
+    this.setMessage();
+  }
+  setMessage() {
+    this.message = this.service.isLoggedIn ? 'logged in' : 'logged out';
+  }
+
+  get logged() {
+    return this.service.isLoggedIn;
+  }
+  login() {
+    this.message = 'Trying to log in';
+    setTimeout(() => {
+      this.service.isLoggedIn = true;
+      this.setMessage();
+    }, 500);
+  }
+  logout() {
+    this.service.isLoggedIn = false;
+    this.setMessage();
   }
 
 }
