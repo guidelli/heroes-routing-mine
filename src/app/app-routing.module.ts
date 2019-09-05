@@ -5,8 +5,9 @@ import { ContactComponent } from './contact/contact.component';
 
 
 const routes: Routes = [
-  {path: 'contact', component: ContactComponent, outlet: 'popup'},
-  {path: '**', component: PageNotFoundComponent}
+  { path: 'contact', component: ContactComponent, outlet: 'popup' },
+  { path: '', redirectTo: '/heroes', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
