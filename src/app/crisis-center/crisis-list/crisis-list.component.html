@@ -1,10 +1,12 @@
-<h2>CRISES</h2>
+
 
 
 <ul>
 
   <li *ngFor="let crisis of crises$|async">
-    <a [routerLink]="['/crisis', crisis.id]" [class.selected]="selectedId===crisis.id"> {{crisis.id}} - {{crisis.name}}</a>
+    <a [routerLink]="['./', crisis.id]" [class.selected]="selectedId===crisis.id"> {{crisis.id}} - {{crisis.name}}</a>
   </li>
 
 </ul>
+
+<router-outlet></router-outlet>
