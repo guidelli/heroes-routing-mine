@@ -1,1 +1,5 @@
-<p>contact works!</p>
+<h2>Contact Crisis Center</h2>
+Message: <br>
+<textarea [disabled]="sending"></textarea><br>
+<button (click)="save()" *ngIf="!sending">Send</button>
+<button (click)="cancel()" *ngIf="!sending">Cancel</button>

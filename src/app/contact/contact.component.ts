@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  message: string;
+  sending = false;
 
   ngOnInit() {
+  }
+
+  cancel() {
+    this.close();
+
+  }
+
+  save() {
+    this.sending = true;
+    this.message = 'sending...';
+    setTimeout(() => {
+      this.sending = false;
+      this.close();
+    }, 500);
+  }
+
+  private close() {
+    this.router.navigate([{ outlets: { popup: null } }]);
   }
 
 }
