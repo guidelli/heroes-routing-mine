@@ -8,6 +8,7 @@ import { CrisesModule } from './crisis-center/crisis-center.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { ContactComponent } from './contact/contact.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ContactComponent } from './contact/contact.component';
     BrowserModule,
     HeroesModule,
     CrisesModule,
-    AppRoutingModule,
+    AdminModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
