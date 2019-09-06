@@ -18,8 +18,9 @@ export class AuthService {
     );
   }
 
-  logout() : boolean{
+  logout(): boolean {
     this.isLoggedIn = false;
+    this.redirectUrl = null;
     return this.isLoggedIn;
   }
 }
