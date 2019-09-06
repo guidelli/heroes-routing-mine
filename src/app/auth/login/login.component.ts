@@ -27,13 +27,12 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.message = 'Trying to log in';
-    setTimeout(() => {
-      this.service.isLoggedIn = true;
-      this.setMessage();
-    }, 500);
+    this.service.login().subscribe(
+      (logged:boolean)=>this.setMessage()
+    );
   }
   logout() {
-    this.service.isLoggedIn = false;
+    this.service.logout();
     this.setMessage();
   }
 
