@@ -13,21 +13,35 @@ import { switchMap } from 'rxjs/operators';
 })
 export class CrisisDetailComponent implements OnInit {
 
-  crisis$: Observable<Crisis>;
+
+
+  crisis: Crisis;
+  editName: string;
 
 
   constructor(private service: CrisisService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
-    this.crisis$ = this.route.paramMap.pipe(switchMap((paramMap: ParamMap) =>
+    this.route.data.subscribe((data: {crisis: Crisis})=>{
+      this.crisis=data.crisis;
+      this.editName=data.crisis.name;
+    });
+ }
 
-      this.service.getCrisis(+paramMap.get('id'))
-    ));
+  gotoCrises() {
+    this.router.navigate(['../', { id: this.crisis.id, foo: 'bar' }], { relativeTo: this.route });
   }
 
-  gotoCrises(idCrisis: number) {
-    this.router.navigate(['../', { id: idCrisis, foo: 'bar' }], { relativeTo: this.route });
+  save(){
+    if(this.editName){
+      this.crisis.name=this.editName;
+      this.gotoCrises();
+    }
+  }
+
+  cancel(){
+    this.gotoCrises();
   }
 
 }
